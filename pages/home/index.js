@@ -11,7 +11,12 @@ Page({
     logos:[],
     pageRow:[],
     quicks:[],
-    swipers:[]
+    swipers:[],
+    indicatorDots:true,
+    vertical:false,
+    autoplay: true,
+    interval:3000,
+    duration: 500,
   },
 
   /**
@@ -28,8 +33,9 @@ Page({
         "content-type":"application/json" //默认值，返回的数据设置为json数据格式
       },
       success(res){
+        console.log(res.data);
         self.setData({
-          logos:res.data.swipers,
+          logos:res.data.logos,
           pageRow: res.data.pageRow,
           quicks: res.data.quicks,
           swipers: res.data.swipers,
