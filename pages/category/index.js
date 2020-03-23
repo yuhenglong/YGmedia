@@ -25,7 +25,7 @@ Page({
         "content-type":"application/json"
       },
       success(res){
-        console.log(res.data);
+        console.log('分类数据',res.data);
         wx.hideLoading();
         self.setData({
           navLeftItems:res.data.navLeftItems,
@@ -38,6 +38,12 @@ Page({
     let index = parseInt(e.currentTarget.dataset.index);
     this.setData({
       curIndex:index
+    })
+  },
+  showListView(e){
+    let txt = e.currentTarget.dataset.txt;
+    wx.navigateTo({
+      url: '/pages/list/index?title=' + txt,
     })
   }
 })
