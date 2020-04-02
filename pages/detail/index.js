@@ -1,45 +1,45 @@
-// 引入interfaces
-const interfaces = require("../../utils/urlConfig.js");
+const interfaces = require("../../utils/urlConfig.js")
 
-// pages/home/index.js
+// pages/detail/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    logos:[{image: "/image/yungu.png", title: "云股传媒"},{image: "/image/83dph.jpg", title: "3D大屏"},{image: "/image/yungu.png", title: "电梯LCD"},{image: "/image/yungu.png", title: "商圈覆盖"}],
-    pageRow:[],
-    quicks:[],
-    swipers:[{image: "/image/home_one.jpg"},{image: "/image/home_two.jpg"},{image: "/image/home_thr.jpg"}],
-    indicatorDots:true,
-    vertical:false,
-    autoplay: true,
-    interval:3000,
-    duration: 500,
+    partData:{},
+    baitiao:[],
+    baitiaoSelectItem:{
+      desc:'[白条支付] 首单享立减优惠'
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options.id);
+    const id = options.id;
     const self = this;
     wx.showLoading({
       title:"加载中..."
     })
     wx.request({
-      url:interfaces.homepage,
-      header:{
-        "content-type":"application/json" //默认值，返回的数据设置为json数据格式
-      },
+      url:interfaces.productionDetail,
       success(res){
-        console.log(res.data);
+        console.log('我是一头大肥猪',res.data);
+        let result = null;
+        res.data.forEach(data =>{
+          if(data.partData.id == id){
+            result = data;
+          }
+        })
+
         self.setData({
-          // logos:res.data.logos,
-          pageRow: res.data.pageRow,
-          quicks: res.data.quicks
-          // swipers: res.data.swipers,
-        });
+          partData:result.partData,
+          baitiao:result.baitiao
+        })
+
         wx.hideLoading();
       }
     })
