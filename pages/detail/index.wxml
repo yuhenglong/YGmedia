@@ -18,6 +18,8 @@
     </view>
     <!-- 支付 -->
       <infocell title="支付" desc="{{baitiaoSelectItem.desc}}"></infocell>
+      <!-- 已选 -->
+      <infocell title="已选" desc="{{partData.count}}件"></infocell>
   </view>
 
 </view>

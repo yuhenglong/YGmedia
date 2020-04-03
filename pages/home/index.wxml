@@ -14,14 +14,14 @@
   <scroll-view class="content-scroll" scroll-y="true">
   <!-- 轮播图 -->
   <scroll-view class="contain">
-  <view class="indicator-wrap">
-    <swiper indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" duration="duration" circular="true" indicator-color="rgba(255,255,255,3)" indicator-active-color="#fff" style="width:100%;height:325rpx;">
-    <block wx:for="{{swipers}}" wx:key="{{index}}">
-      <swiper-item>
-        <image class="swiper-item" src="{{item.image}}" mode="aspectFill"/>
-      </swiper-item>
-    </block>
-    </swiper>
+    <view class="indicator-wrap">
+      <swiper indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" duration="duration" circular="true" indicator-color="rgba(255,255,255,3)" indicator-active-color="#ff751d" style="width:100%;height:325rpx;">
+      <block wx:for="{{swipers}}" wx:key="{{index}}">
+        <swiper-item>
+          <image class="swiper-item" src="{{item.image}}" mode="aspectFill"/>
+        </swiper-item>
+      </block>
+      </swiper>
     </view>
   </scroll-view>
 
@@ -34,7 +34,14 @@
       </view>
     </block>
   </view>
-
+<!-- 装饰条 -->
+<view class="img_zst">
+  <image class="img_z" src="/image/zst.png"></image>
+</view>
+<!-- 宣传图 -->
+<view class="xct">
+  <image class="img_xct" src="/image/xct.png" />
+</view>
 <!-- 掌上秒杀 -->
 <!-- <view class="page-margin">
   <view class="page-row">

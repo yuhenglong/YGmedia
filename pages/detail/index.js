@@ -18,7 +18,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.id);
     const id = options.id;
     const self = this;
     wx.showLoading({
@@ -27,11 +26,12 @@ Page({
     wx.request({
       url:interfaces.productionDetail,
       success(res){
-        console.log('我是一头大肥猪',res.data);
+        
         let result = null;
         res.data.forEach(data =>{
           if(data.partData.id == id){
             result = data;
+            console.log('我是一头大肥猪',result);
           }
         })
 
@@ -93,4 +93,5 @@ Page({
   onShareAppMessage: function () {
 
   }
+  
 })

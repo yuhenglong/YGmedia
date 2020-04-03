@@ -46,7 +46,6 @@
   width: 100%; 
   display: flex; 
   flex-direction: column; 
-  margin-top:20rpx;
   white-space: nowrap;
 }
 .indicator-wrap{
@@ -142,3 +141,28 @@
   height: 0;
   color: transparent;
 }
+/* 恒隆 */
+.img_zst{
+  width:100%;
+  height:auto;
+  background-color: #fff;
+  display:flex;
+  /* 水平居中 */
+  justify-content : center;
+}
+.img_z{
+  width:680rpx;
+  height: 200rpx;
+}
+.xct{
+  width:100%;
+  height:auto;
+  background-color: #fff;
+  display:flex;
+  justify-content:center;
+}
+.img_xct{
+  width:720rpx;
+  height:718rpx;
+}
+/* 恒隆 */
