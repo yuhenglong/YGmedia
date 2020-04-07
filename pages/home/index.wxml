@@ -1,16 +1,4 @@
 <view class="container">
-  <!-- <view class="search">
-    <view class="scan">
-      <image class="widgets-img" src="/image/ai3.png" mode="aspectFit"></image>
-    </view>
-    <view class="search-input">
-    <image class="search-icon" src="/image/ath.png" mode="aspectFit" />
-    <input class="search-text" placeholder="搜索广告" />
-    </view>
-    <view class="scan">
-    <image class="widgets-img" src="/image/ahv.png" mode="aspectFit" />
-    </view>
-  </view> -->
   <scroll-view class="content-scroll" scroll-y="true">
   <!-- 轮播图 -->
   <scroll-view class="contain">

@@ -1,0 +1,5 @@
+<view class="num_wrap">
+  <button class="btn" catchtap="subtract">-</button>
+  <input type="number" bindinput="inputChangeHandle" value="{{count}}"></input>
+  <button class="btn" catchtap="add">+</button>
+</view>

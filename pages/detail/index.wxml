@@ -17,9 +17,20 @@
       <text>¥{{partData.price}}</text>
     </view>
     <!-- 支付 -->
-      <infocell title="支付" desc="{{baitiaoSelectItem.desc}}"></infocell>
+      <infocell 
+      title="支付" 
+      desc="{{baitiaoSelectItem.desc}}"
+      bind:popView="popBaitiaoView"
+      ></infocell>
       <!-- 已选 -->
-      <infocell title="已选" desc="{{partData.count}}件"></infocell>
+      <infocell 
+      title="已选" 
+      desc="{{partData.count}}件"
+      bind:popView="popBuyView"
+      ></infocell>
   </view>
-
+  <!-- 白条 -->
+  <IOU bind:updateSelect="updateSelectItem" baitiao="{{baitiao}}" hideBaitiao="{{hideBaitiao}}"></IOU>
+  <!-- 已选 -->
+  <buy bind:onGetCount="updateCount" hideBuy="{{hideBuy}}" partData="{{partData}}"></buy>
 </view>

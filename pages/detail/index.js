@@ -11,7 +11,9 @@ Page({
     baitiao:[],
     baitiaoSelectItem:{
       desc:'[白条支付] 首单享立减优惠'
-    }
+    },
+    hideBaitiao:true,
+    hideBuy:true
   },
 
   /**
@@ -45,6 +47,32 @@ Page({
     })
   },
 
+  popBaitiaoView(){
+    // console.log("显示白条");
+    this.setData({
+      hideBaitiao:false
+    })
+  },
+  updateSelectItem(e){
+    // console.log(e);
+    this.setData({
+      baitiaoSelectItem:e.detail
+    })
+  },
+  // 更新数量
+  updateCount(e){
+    console.log("傻瓜")
+    let partData = this.data.partData;
+    partData.count = e.detail.val;
+    this.setData({
+      partData
+    })
+  },
+  popBuyView(){
+    this.setData({
+      hideBuy:false
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
