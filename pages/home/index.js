@@ -24,9 +24,9 @@ Page({
    */
   onLoad: function (options) {
     const self = this;
-    wx.showLoading({
-      title:"加载中..."
-    })
+    // wx.showLoading({
+    //   title:"加载中..."
+    // })
     wx.request({
       url:interfaces.homepage,
       header:{
@@ -40,7 +40,7 @@ Page({
           quicks: res.data.quicks
           // swipers: res.data.swipers,
         });
-        wx.hideLoading();
+        // wx.hideLoading();
       }
     })
   },

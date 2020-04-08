@@ -29,8 +29,20 @@
       bind:popView="popBuyView"
       ></infocell>
   </view>
+
+  <!-- 购物车 -->
+  <view class="btn_bar">
+    <view class="icon_cart" bindtap="showCartView">
+    <text class="badge" wx:if="{{badgeCount > 0}}">{{badgeCount}}</text>
+      <image src="/image/cart.png"/>
+      <text>购物车</text>
+    </view>
+    <view class="cart_btn">
+      <button bindtap="addCart">加入购物车</button>
+    </view>
+  </view>
   <!-- 白条 -->
   <IOU bind:updateSelect="updateSelectItem" baitiao="{{baitiao}}" hideBaitiao="{{hideBaitiao}}"></IOU>
   <!-- 已选 -->
-  <buy bind:onGetCount="updateCount" hideBuy="{{hideBuy}}" partData="{{partData}}"></buy>
+  <buy bind:buyEvent="addCart" bind:onGetCount="updateCount" hideBuy="{{hideBuy}}" partData="{{partData}}"></buy>
 </view>

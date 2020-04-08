@@ -1,5 +1,4 @@
 /* pages/detail/index.wxss */
-/* pages/detail/index.wxss */
 .detail{
   display: flex;
   flex-direction: column;

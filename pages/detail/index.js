@@ -13,7 +13,8 @@ Page({
       desc:'[白条支付] 首单享立减优惠'
     },
     hideBaitiao:true,
-    hideBuy:true
+    hideBuy:true,
+    badgeCount:0
   },
 
   /**
@@ -33,7 +34,6 @@ Page({
         res.data.forEach(data =>{
           if(data.partData.id == id){
             result = data;
-            console.log('我是一头大肥猪',result);
           }
         })
 
@@ -46,7 +46,21 @@ Page({
       }
     })
   },
-
+  onShow:function(){
+    const self = this;
+    wx.getStorage({
+      key: 'cartInfo',
+      success:function(res){
+        const cartArray = res.data;
+        self.setBadge(cartArray);
+      }
+    })
+  },
+  showCartView(){
+    wx.switchTab({
+      url: '/pages/cart/index',
+    })
+  },
   popBaitiaoView(){
     // console.log("显示白条");
     this.setData({
@@ -61,7 +75,6 @@ Page({
   },
   // 更新数量
   updateCount(e){
-    console.log("傻瓜")
     let partData = this.data.partData;
     partData.count = e.detail.val;
     this.setData({
@@ -73,53 +86,62 @@ Page({
       hideBuy:false
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  addCart(){
+    // console.log("加入购物车");
+    let self = this;
+    wx.getStorage({
+      key:'cartInfo',
+      success:function(res){
+        const cartArray = res.data;
+        const partData = self.data.partData;
+        let isExit = false;
+        cartArray.forEach(cart =>{
+          if(cart.id == partData.id){
+            isExit = true;
+            cart.total += self.data.partData.count;
+            wx.setStorage({
+              key: 'cartInfo',
+              data:cartArray
+            })
+          }
 
+          if(!isExit){
+            partData.total = self.data.partData.count;
+            cartArray.push(partData);
+            wx.setStorage({
+              key: 'cartInfo',
+              data: cartArray
+            })
+          }
+
+          // 商品数量
+          self.setBadge(cartArray);
+        })
+        wx.showToast({
+          title:"加入购物车成功",
+          icon:'success',
+          duration:3000
+        })
+      },
+      fail(){
+        let partData = self.data.partData;
+        partData.total = self.data.partData.count;
+        let cartArray = [];
+        cartArray.push(partData);
+        wx.setStorage({
+          key:'cartInfo',
+          data:cartArray
+        })
+        // 商品数量
+        self.setBadge(cartArray);
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 商品数量方法
+  setBadge(cartArray){
+    this.setData({
+      badgeCount:cartArray.length
+    })
   }
   
 })
