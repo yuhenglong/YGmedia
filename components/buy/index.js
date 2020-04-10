@@ -5,10 +5,10 @@ Component({
    */
   properties: {
     hideBuy:{
-      type:Boolean,
-      value:true
+      type: Boolean,
+      value: true
     },
-    partData:Object
+    partData: Object
   },
 
   /**
@@ -22,22 +22,20 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    hideBuyView(e){
-      if(e.target.dataset.target == "self"){
+    hideBuyView: function (e) {// 隐藏商品弹框
+      if (e.target.dataset.target == 'self')
         this.setData({
-          hideBuy:true
+          hideBuy: true
         })
-      }
     },
-    getCount(e){
-      this.triggerEvent("onGetCount",e.detail);
+    getCount: function(e){
+      this.triggerEvent('onGetCount', e.detail)
     },
-    buy(){
+    buy: function(){
       this.setData({
-        hideBuy:true
+        hideBuy: true
       })
-      // 事件传递
-      this.triggerEvent("buyEvent");
+      this.triggerEvent('buyEvent')
     }
   }
 })

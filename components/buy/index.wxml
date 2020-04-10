@@ -12,8 +12,8 @@
     </view>
     <view class='buy_body'>
       <text>数量</text>
-      <view class="amount">
-       <amount count="{{partData.count}}" bind:myevent="getCount"></amount>
+      <view class='amount'>
+        <amount count='{{partData.count}}' bind:myevent='getCount'></amount>
       </view>
     </view>
     <view class='pop_btn'>
